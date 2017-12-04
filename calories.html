@@ -1,0 +1,116 @@
+<html>
+<head>
+
+<title>
+Calories Burned Calculator
+</title>
+<style type="text/css">
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="container.css">
+
+
+
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+</br>
+<script language="javascript">
+function calculate(nameString,AgeDecimal,WeightDecimal,RateDecimal,TimeDecimal){
+//calculate simple interest
+var yourMaleDecimal = 0*1;
+var yourFemaleDecimal = 0*1;
+
+yourMaleDecimal = ((AgeDecimal * 0.2017) - (WeightDecimal * 0.09036) + (RateDecimal * 0.6309) - 55.0969) * TimeDecimal / 4.184;
+yourFemaleDecimal = ((AgeDecimal * 0.074) - (WeightDecimal * 0.05741) + (RateDecimal * 0.4472) - 20.4022) * TimeDecimal / 4.184;
+
+document.outputform.txaoutput.value = "Hi " + nameString + "\n" +			
+			"Your Male Calories Burned is " + yourMaleDecimal  + "\n" + "Your Female Calories Burned is " + yourFemaleDecimal;
+
+}
+
+</script>
+
+</head>
+<body>
+
+<center>
+
+<h1>Calories Burned Calculations</h1>
+</br>
+</br>
+<form name="frmmain">
+Enter Your Name:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtName" value=""/>
+</br>
+Enter Age:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtAge" value=""/>
+</br>
+Enter Your Current Weight:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtWeight" value=""/>
+</br>
+Enter Your Heart Rate:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtRate" value=""/>
+</br>
+Enter Your Exercise Time:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtTime" value=""/>
+</br>
+<input type="button" name="btnCalculate" value="Calculate"
+		onclick="calculate(frmmain.txtName.value, frmmain.txtAge.value ,
+		frmmain.txtWeight.value, frmmain.txtRate.value, frmmain.txtTime.value)" />
+
+</form>
+</br>
+
+<form name="outputform">
+<textarea name="txaoutput" id="output" rows="10" cols="50"/>
+
+
+
+</textarea>
+</form>
+
+</center>
+
+
+
+</body>
+</html>

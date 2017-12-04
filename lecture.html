@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>HTML5 Animation</title>
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="container.css">
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="array.html">Fish Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+			<li><a href="start.html">Potato Stars</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+<script type="text/javascript">
+//define the object = circles
+var onOff = 0*1;
+function CircleInfo(x,y,velx,vely,color){	
+	this.x = x;
+	this.y = y;
+	this.velx = velx;
+	this.vely = vely;
+	this.color= color;
+}
+var Ball = new Array();
+for(var i=0; i<5; i++){
+	var xcoord = Math.floor(Math.random()* 900)*1; 
+	var ycoord = Math.floor(Math.random() * 600)* 1;
+	var myColor = getRandomColor();
+	Ball[i] = new CircleInfo(xcoord,ycoord,10,10,myColor);
+}
+function drawCircle(){
+//this function draws the circles out
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.canvas.width=900;
+	ctx.canvas.height=600;
+	ctx.fillStyle="#000000";
+	ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+	//draw out the circles with a for loop
+	for(var i=0;i<5;i++){
+		ctx.fillStyle = Ball[i].color;
+		ctx.beginPath();
+		ctx.arc(Ball[i].x,Ball[i].y,20,0,Math.PI*2,true);
+		ctx.closePath();
+		ctx.fill();
+	}
+}
+function getRandomColor() {
+// creating a random number between 0 and 255
+var r = Math.floor(Math.random()*256);
+var g = Math.floor(Math.random()*256);
+var b = Math.floor(Math.random()*256);
+// going from decimal to hex
+var hexR = r.toString(16);
+var hexG = g.toString(16);
+var hexB = b.toString(16);
+// making sure single character values are prepended with a "0"
+if (hexR.length == 1) {
+hexR = "0" + hexR;
+}
+if (hexG.length == 1) {
+hexG = "0" + hexG;
+}
+if (hexB.length == 1) {
+hexB = "0" + hexB;
+} 
+// creating the hex value by concatenatening the string values
+var hexColor = "#" + hexR + hexG + hexB;
+return hexColor.toUpperCase();
+}
+function moveDots(){
+	
+	// move the circles in forloop
+	for(var k = 0; k<5 ;k++){
+	if(Ball[k].x > document.getElementById("myCanvas").width - 20){
+		Ball[k].velx *= -1;
+	}
+	else if(Ball[k].x <= 20){
+		Ball[k].velx *= -1;
+	}	
+	if(Ball[k].y > document.getElementById("myCanvas").height - 20){
+		Ball[k].vely *= -1;
+	}
+	else if(Ball[k].y <= 20){
+		Ball[k].vely *= -1;
+	}
+	
+	Ball[k].x += Ball[k].velx;
+	Ball[k].y += Ball[k].vely;
+	
+	}
+	for(f=0;f<5;f++){
+		var balleft = Ball[f].x-20;
+		var balltop = Ball[f].y-20;
+		var radiusheight = 20;
+		var radiuswidth = 20;
+		var centerX = balleft + radiuswidth;
+		var centerY = balltop + radiusheight;
+	for(i=0;i<5;i++){
+		balleft2 = Ball[i].x-20;
+		balltop2 = Ball[i].y-20;
+		var radiuswidth2 = 20;
+		var radiusheight2 = 20;
+		var centerX2 = balleft2 + radiuswidth2;
+		var centerY2 = balltop2 + radiusheight2;
+		var distance = Math.sqrt((Math.pow(centerY2-centerY,2)+Math.pow(centerX2-centerX,2)));
+		if(distance <= 40 && i != f){
+			//Ball[i].vely *= -1;
+			Ball[i].velx *= -1;
+		}
+	}
+	}
+	drawCircle();
+	
+}
+
+function Timer(){
+if(onOff == 0){
+	onOff = 1;
+	timer = setInterval("moveDots()",30);
+}
+else if(onOff == 1){
+	onOff = 0;
+	clearInterval(timer);
+}
+}
+
+</script>
+
+
+</head>
+<body onload="drawCircle()">
+</br>
+<center>
+<canvas id="myCanvas" width="900" height="600" style="border: 2px solid rgb(195,195,195);">
+your browser does not support the canvas tag.
+</canvas> 
+</center>
+</br>
+</br>
+<input type="button" value="Push Me" onclick="Timer()"/>
+
+</body>
+</html>
+
+
+
+

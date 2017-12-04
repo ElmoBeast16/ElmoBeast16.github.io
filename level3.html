@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>Final Game</title>
+
+<style>
+body	{
+background-image: url("finalprojectback.png");
+background-repeat: no-repeat;
+background-size: 1369px 670px;
+</style>
+
+<img src="instruct.png" style="position:absolute; top:50;left:350">
+<img src="scoreboard.gif" style="position:absolute; top:200;left:600" height="100" width="150">
+
+<script type="text/javascript">
+// global variables used in the code
+var power = 0*1;
+var timejumpA = 0*1;
+var timejumpB = 0*1;
+var timefallA = 0*1;
+var timefallB = 0*1;
+var timefallball = 1;
+var gravity = 1.05;
+var fallcount = 0*1;
+var goal = 0*1;
+var scoreplayer = 0*1;
+var scorebot = 0*1;
+var gametime = 0*1;
+var actualtime = 0*1;
+
+
+//array that will drop the powerups at certain intervals
+var whichBox = new Array (new Array("ai1","ai2","ai3","ai4","ai5","ai6","ai7","ai8","ai9","ai10","ai11","ai12"));
+
+function drawCircle(){
+//this function draws the canvas in which the game will be running 
+// on all cylinders
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.canvas.width=900;
+	ctx.canvas.height=576;
+	ctx.fillStyle="#800000";
+	ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+	
+}
+
+document.onkeypress = function enterKey2(e){
+if(!window.event){
+	//e= window.event || e;
+	//firefox
+	key = e.charCode;
+	//alert(e.charCode);
+	}
+	else{
+	//enterKey()
+	//chrome
+	var e = window.event;
+	key = e.keyCode;
+	}
+
+var x = parseInt(document.getElementById("downside").style.left);
+var y = parseInt(document.getElementById("downside").style.top);
+// movement for the characters
+if(key==114){
+	location.reload();
+}
+if(key==100){
+if(x < 1100){
+	x += 15;
+}
+}
+else if(key==97){
+if(x > 220){
+	x -= 15;
+}
+}
+else if(key==119){
+	TimerJumpA();
+}
+else if(key==115){
+	powerfunction();
+}
+	document.getElementById("downside").style.left = x;
+	document.getElementById("downside").style.top = y;
+}
+// timer for the jumping function
+var onOff = 0*1;
+function TimerJumpA(){
+	if(onOff == 0){
+	onOff = 1;
+	timer = setInterval("jumpfunctionA()",10);
+	}
+	else if(onOff == 1){
+	onOff = 0;
+	clearInterval(timer);  	
+	}
+}
+// timer for the falling function
+var onOffA = 0*1;
+function TimerFallA(){
+	if(onOffA == 0){
+	onOffA = 1;
+	timer = setInterval("fallfunctionA()",10);
+	}
+	else if(onOffA == 1){
+	onOffA = 0;
+	clearInterval(timer);  	
+	}
+}
+// the way that the function will jump
+function jumpfunctionA() {	
+	var yD = parseInt(document.getElementById("downside").style.top);
+	yD -= 2;
+	timejumpA += 1;
+	if(timejumpA >= 60){
+		onOff = 1;
+		TimerJumpA();
+		TimerFallA();
+		timejumpA = 0;
+	}
+	document.getElementById("downside").style.top = yD;
+}
+// how the character will fall after a certain amount of time
+function fallfunctionA(){
+	var yD = parseInt(document.getElementById("downside").style.top);
+	yD += 3.5;
+	if(yD >= 550){
+		onOffA = 1;
+		TimerFallA();
+	}
+	document.getElementById("downside").style.top = yD;
+}
+var ballfall = 0*1;
+function ballTimer(){
+	if(ballfall == 0){
+	ballfall = 1;
+	timer = setInterval("ballFunction()",10);
+	}
+	else if(ballfall == 1){
+	ballfall = 0;
+	clearInterval(timer);  	
+	}
+}
+function ballFunction(){
+var ballY = parseInt(document.getElementById("ball").style.top);
+timefallball++;
+if(ballY >= 550){
+gravity *= -1;
+ballTime();
+}
+if(ballY <= 400){
+gravity *= -1;
+}
+ballY += gravity;
+document.getElementById("ball").style.top = ballY;
+}
+var ballmove = 0*1;
+function ballTime(){
+	if(ballmove == 0){
+	ballmove = 1;
+	timer = setInterval("ballMover()",50);
+	}
+	else if(ballmove == 1){
+	ballmove = 0;
+	clearInterval(timer);  	
+	}
+}
+function ballMover(){
+var ballX = parseInt(document.getElementById("ball").style.left);
+var ballY = parseInt(document.getElementById("ball").style.top);
+if(ballX >= 1110){
+	alert("GOAL GOAL GOAL");
+	ballX = 685;
+	ballY = 510;
+	goal=0;
+}
+document.getElementById("ball").style.left = ballX;
+document.getElementById("ball").style.top = ballY;
+}
+var enemymove = 0*1;
+function enemyTimer(){
+	if(enemymove == 0){
+	enemymove = 1;
+	timer = setInterval("enemyMovement()",50);
+	}
+	else if(enemymove == 1){
+	enemymove = 0;
+	clearInterval(timer);  	
+	}
+}
+function enemyMovement(){
+gametime++;
+actualtime = 40 - Math.round(gametime/10);
+if(actualtime <= 0){
+	alert("Out of Time!");
+}
+var ballplace = parseInt(document.getElementById("ball").style.left);
+var enemyplace = parseInt(document.getElementById("upside").style.left);
+var differ = (ballplace - enemyplace);
+if(differ >= 10){
+enemyplace += 5;
+}
+else if(differ < -10){
+enemyplace -= 5;
+}
+
+document.getElementById("upside").style.left = enemyplace;
+ document.OutputForm2.txaOutputField.value=actualtime;
+}
+function enemyHitter(){}
+function playerHitter(){}
+
+</script>
+
+
+</head>
+<body onload="drawCircle(),ballTimer(),enemyTimer()">
+</br>
+<center>
+<canvas id="myCanvas" width="900" height="600" style="border: 2px solid rgb(195,195,195);">
+your browser does not support the canvas tag.
+</canvas>
+</center> 
+
+<div style="position:absolute; top:235;left:606">
+<form name="OutputForm">
+<textarea name="txaOutputField" id="outputField" rows="1" cols="5"/>
+</textarea>
+</form>
+</div>
+<div style="position:absolute; top:235;left:687">
+<form name="OutputForm1">
+<textarea name="txaOutputField" id="outputField1" rows="1" cols="5"/>
+</textarea>
+</form>
+</div>
+<div style="position:absolute; top:190;left:627">
+<form name="OutputForm2">
+<textarea name="txaOutputField" id="outputField2" rows="1" cols="10"/>
+</textarea>
+</form>
+</div>
+
+<img style="position:absolute; top:504;left:195" width=72 height=120
+	id="netleft" src="leftgoal.png">
+<img style="position:absolute; top:504;left:1100" width=72 height=120
+	id="netright" src="goal.png">
+<img style="position:absolute; top:550;left:500" width=60 height=60
+	id="downside" src="pot1_burned.png">
+<img style="position:absolute; top:535;left:800" width=70 height=70
+	id="upside" src="pot2_burnedright.png">
+<img style="position:absolute; Top:510; Left:685;" 
+	src="ball.svg" height="40" width="40" id="ball">
+	
+<audio controls autoplay loop hidden>
+  <source src="music.wav" type="audio/wav">
+  <source src="music.wav" type="audio/wav">
+Your browser does not support the audio element.
+</audio>
+ 
+</body>
+</html>

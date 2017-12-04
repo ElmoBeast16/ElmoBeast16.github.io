@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>
+Number Array 
+</title>
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="container.css">
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="array.html">Fish Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+			<li><a href="start.html">Potato Stars</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+<script language="javascript">
+function forLoop(){
+//declare array
+var myArray = new Array(100);
+var myArray2 = new Array(100);
+var outputString = "";
+var realoutputString = "";
+var Largest = 0*1;
+var realMaxNumber = 0*1;
+var variable = 0*1;
+var low = 100*1;
+var ave = 0*1;
+for(var i=0; i < 100; i++){
+		myArray[i] = Math.round(Math.random()*100);		
+}
+for(var k=0; k < myArray.length; k++){
+if(myArray[k] > realMaxNumber){
+realMaxNumber = myArray[k];
+}
+if(myArray[k] < low){
+low = myArray[k];
+}	
+ave += myArray[k] / 100;
+outputString = outputString + myArray[k] + "\n";	
+}
+for(var q=0; q < (100); q++){
+	for(var g=0; g < (100); g++){
+	if(Largest < myArray[g]){
+	variable = (g);
+	Largest = myArray[g];
+	}		
+	}
+myArray[variable] = -1;
+myArray2[q] = Largest;
+Largest = -1;
+realoutputString += myArray2[q] + "\n";
+}
+document.OutputForm.txaoutputField.value = realoutputString + "\n" + "The Max: " + realMaxNumber + "\n" + "The Low: " + low + "\n" + "The Average: " + ave ;
+}
+</script>
+</head>
+<body>
+<center>
+<h1>Random number integer</h1>
+</br>
+</br>
+<input type="button" name="btnPush" value="Push Me"onclick="forLoop()"/>
+</br>
+</br>
+<form name="OutputForm">		
+<textarea name="txaoutputField" id="outputField" rows="20" cols="20"/>
+</textarea>
+</form>
+</center>
+</body>
+</html>

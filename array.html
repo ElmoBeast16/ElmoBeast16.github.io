@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Array</title>
+
+<style type="text/css">
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="container.css">
+
+
+
+<body background="business.jpg">
+<center>
+</br>
+<img src="jake.png">
+
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="array.html">Fish Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="">No Projects Yet</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+
+</ul>
+</div>	
+</br>
+</br>
+
+<script language="javascript">
+//global variables for pics 
+var whichBox = new Array("ai1","ai2","ai3","ai4","ai5","ai6","ai7","ai8","ai9","ai10");
+var fishy = Math.floor(Math.random() * whichBox.length);
+var bumpright = 1*0;
+var bumpleft = 1*0;
+var moves = 1*0;
+
+function chooseItem(){
+	document.getElementById(whichBox[fishy]).src = "blank.png";	
+	move = Math.floor(Math.random() * 2);
+	moves += 1;
+
+	if(move == 0){
+		fishy -= 2;
+		if(fishy <= 0){
+			bumpleft += 1;
+			fishy = 0;
+		}
+		document.getElementById(whichBox[fishy]).src = "bossleft.png";
+	}
+	
+	else if(move == 1){
+		fishy += 2;
+		if(fishy >= 9){
+			bumpright += 1;
+			fishy = 9;
+		}
+		document.getElementById(whichBox[fishy]).src = "bossright.png";
+	}
+	
+		document.outputform.txaoutput.value = "Total Moves: " + moves + "\n" +			
+			"Bumps On Left: " + bumpleft  + "\n" + "Bumps On Right: " + bumpright;
+	
+}
+
+//create variable to use as switch
+var onOff = 0*1;
+function myTimer(){
+
+	if(onOff == 0){
+		//create a timer
+		onOff = 1;
+		timer = setInterval("chooseItem()",200);
+	}
+
+	else if(onOff == 1){
+		onOff = 0;
+		clearInterval(timer);
+	}
+	
+
+}
+
+</script>
+</head>
+<body>
+<center>
+<h1>How to use Arrays</h1>
+<table border="2">
+<tr>
+<td><img id="ai1" width="60" height="60" src="blank.png"></td>
+<td><img id="ai2" width="60" height="60" src="blank.png"></td>
+<td><img id="ai3" width="60" height="60" src="blank.png"></td>
+<td><img id="ai4" width="60" height="60" src="blank.png"></td>
+<td><img id="ai5" width="60" height="60" src="blank.png"></td>
+<td><img id="ai6" width="60" height="60" src="blank.png"></td>
+<td><img id="ai7" width="60" height="60" src="blank.png"></td>
+<td><img id="ai8" width="60" height="60" src="blank.png"></td>
+<td><img id="ai9" width="60" height="60" src="blank.png"></td>
+<td><img id="ai10" width="60" height="60" src="blank.png"></td>
+
+</tr>
+</table>
+</br>
+</br>
+<input type="button" value="click" onclick="chooseItem()">
+<input type="button" value="auto" onclick="myTimer()">
+</br>
+</br>
+
+<form name="outputform">
+<textarea name="txaoutput" id="output" rows="10" cols="50"/>
+</textarea>
+</form>
+
+</center>
+</body>
+</html>

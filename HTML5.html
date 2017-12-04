@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>HTML5 Animation</title>
+<script type="text/javascript">
+//define the object = circles
+function CircleInfo(x,y,velx,vely,color){
+	
+	this.x = x;
+	this.y = y;
+	this.velx = velx
+	this.vely = vely
+	this.color= color;
+	
+
+}
+
+var Ball = new Array();
+for(var i=0; i<5; i++){
+	var xcoord = Math.floor(Math.random()* 500)*1; 
+	var ycoord = Math.floor(Math.random() * 150)* 1;
+	var myColor = getRandomColor();
+
+	Ball[i] = new CircleInfo(xcoord,ycoord,10,10,myColor);
+
+}
+
+function drawCircle(){
+//this function draws the circles out
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.canvas.width=500;
+	ctx.canvas.height=500;
+	ctx.fillStyle="#000000";
+	ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+	//draw out the circles with a for loop
+	for(var i=0;i<5;i++){
+		ctx.fillStyle = Ball[i].color;
+		ctx.beginPath();
+		ctx.arc(Ball[i].x,Ball[i].y,15,0,Math.PI*2,true);
+		ctx.closePath();
+		ctx.fill();
+	
+	}
+
+}
+
+function getRandomColor() {
+
+// creating a random number between 0 and 255
+var r = Math.floor(Math.random()*256);
+var g = Math.floor(Math.random()*256);
+var b = Math.floor(Math.random()*256);
+ 
+// going from decimal to hex
+var hexR = r.toString(16);
+var hexG = g.toString(16);
+var hexB = b.toString(16);
+ 
+// making sure single character values are prepended with a "0"
+if (hexR.length == 1) {
+
+hexR = "0" + hexR;
+
+}
+ 
+if (hexG.length == 1) {
+
+hexG = "0" + hexG;
+
+}
+ 
+if (hexB.length == 1) {
+
+hexB = "0" + hexB;
+
+}
+ 
+// creating the hex value by concatenatening the string values
+var hexColor = "#" + hexR + hexG + hexB;
+return hexColor.toUpperCase();
+}
+
+
+</script>
+
+
+</head>
+<body onload="drawCircle()">
+</br>
+</br>
+<canvas id="myCanvas" width="500" height="500" 
+style="border: 2px solid rgb(195,195,195);">
+your browser does not support the canvas tag.
+</canvas> 
+
+
+
+</body>
+</html>

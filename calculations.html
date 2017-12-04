@@ -1,0 +1,59 @@
+</html>
+<head>
+
+<title>
+Calculations
+</title>
+
+<script language="javascript">
+function calculate(nameString,rateDecimal,timeDecimal,princeDecimal){
+//calculate simple interest
+var yourInterestDecimal = 0*1;
+
+
+yourInterestDecimal = rateDecimal * timeDecimal * princeDecimal;
+
+
+document.outputform.txaoutput.value = "Hi " + nameString + "\n" +			
+			"Your Interest is " + yourInterestDecimal;
+
+}
+
+</script>
+
+</head>
+
+<body>
+<center>
+
+<h1>Simple Interest Calculations</h1>
+</br>
+</br>
+<form name="frmmain">
+Enter Your Name:&nbsp&nbsp&nbsp&nbsp<input type="text" name="txtName" value=""/>
+</br>
+Enter Rate in Decimal Form:&nbsp&nbsp&nbsp&nbsp<input type="text" 
+name="txtRate" value=""/>
+</br>
+Enter Number of Years:&nbsp&nbsp&nbsp&nbsp<input type="text" 
+name="txtYears" value=""/>
+</br>
+Enter Starting Amount:&nbsp&nbsp&nbsp&nbsp<input type="text" 
+name="txtPrince" value=""/>
+</br>
+<input type="button" name="btnCalculate" value="Calculate"
+		onclick="calculate(frmmain.txtName.value,frmmain.txtRate.value,
+		frmmain.txtYears.value,frmmain.txtPrince.value)" />
+
+</form>
+</br>
+
+<form name="outputform">
+<textarea name="txaoutput" id="output" rows="20" cols="20"/>
+</textarea>
+</form>
+
+</center>
+</body>
+
+</html>

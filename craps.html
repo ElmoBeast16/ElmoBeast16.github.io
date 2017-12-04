@@ -1,0 +1,195 @@
+<html>
+<head>
+<title>
+Craps By Jake Allen
+</title>
+
+<style type="text/css">
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="container.css">
+
+
+
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+
+</ul>
+</div>	
+</br>
+</br>
+
+<script language="javascript">
+	var Roll = 0*1;
+	var Point = 0*1;
+	var Game = 0*1; 
+	var Wins = 0*1; 
+	var percentwin = 0*1;	
+function crapsgame()
+{
+
+	var Total = document.getElementById("Total");
+	var Dice1= 0*1;
+	var Dice2= 0*1;
+	Dice1 =Math.floor((Math.random()*6)+1);
+	Dice2 =Math.floor((Math.random()*6)+1);
+	Roll ++;	
+	
+	Total= (Dice1 + Dice2);
+	if(Roll == 1) 
+	{
+		Point = Total;
+	}	
+		
+	if(Dice1 ==1)
+	{
+		document.getElementById("Dice1").src="dice1.png";		
+	}
+	else if(Dice1 ==2)
+	{
+		document.getElementById("Dice1").src="dice2.png";
+	}
+	else if(Dice1 ==3)
+	{
+		document.getElementById("Dice1").src="dice3.png";
+	}
+	else if(Dice1 ==4)
+	{
+		document.getElementById("Dice1").src="dice4.png";
+	}
+	else if(Dice1 ==5)
+	{
+	
+		document.getElementById("Dice1").src="dice5.png";
+	}
+	else if(Dice1 ==6)
+	{
+		document.getElementById("Dice1").src="dice6.png";
+	}	
+	if(Dice2 ==1)
+	{
+		document.getElementById("Dice1").src="dice1.png";
+	}
+	else if(Dice2 ==2)
+	{
+		document.getElementById("Dice1").src="dice2.png";
+	}
+	else if(Dice2 ==3)
+	{
+		document.getElementById("Dice2").src="dice3.png";
+	}
+	else if(Dice2 ==4)
+	{
+		document.getElementById("Dice2").src="dice4.png";
+	}
+	else if(Dice2 ==5)
+	{
+		document.getElementById("Dice2").src="dice5.png";
+	}
+	else if(Dice2 ==6)
+	{
+		document.getElementById("Dice2").src="dice6.png";
+	}
+	if(Roll == 1 && (Total == 7 || Total == 11))
+	{
+		alert("You Won");
+		Roll = 0;
+		Wins ++;
+		document.outputForm.txaoutputField.value = "Roll: " +  "\n" + "Dice1: "  + "\n" +"Dice2: "  + "\n" + "Point: " + "\n" ;		
+	}
+	if (Roll == 1 && (Point == 2 || Point == 3 || Point == 12))
+	{
+		alert("You Lost!");
+		Roll = 0;
+		
+		document.outputForm.txaoutputField.value = "Roll: " +  "\n" + "Dice1: "  + "\n" +"Dice2: "  + "\n" + "Point: " + "\n" ;
+	}
+	if(Roll > 1 && Total == Point)
+	{
+		alert("You Won");
+		Roll = 0;
+		Wins ++;
+		Total +=1;		
+		document.outputForm.txaoutputField.value = "Roll: " +  "\n" + "Dice1: "  + "\n" +"Dice2: "  + "\n" + "Point: " + "\n" ;		
+	}
+	if(Roll > 1 && Total == 7)
+	{
+		alert("You Lost");
+		Roll = 0;;
+		Total += 1;
+		document.outputForm.txaoutputField.value = "Roll: " +  "\n" + "Dice1: "  + "\n" +"Dice2: "  + "\n" + "Point: " + "\n" ; 
+	}
+	
+		Game ++;
+	percentwin = (Wins / Game) * 100;
+	
+	document.outputForm.txaoutputField.value = "Total: " + Total + "\n" + "Dice 1: " +Dice1 + "\n" 
+	+"Dice 2: " + Dice2 + "\n" + "GamePoint: " + Point + "\n" + "Percent: " + percentwin + " %";
+}
+</script>
+</head>
+<body background="bg.jpg">
+<center>
+<h1>Take a Chance With Craps Game!</h1>
+</center>
+<form name="Dice">
+<center>
+<img id ="Dice1" src ="dice1.png" width="150px" height="150px"></img>
+&nbsp
+<img id ="Dice2" src ="dice1.png" width="150px" height="150px"></img>
+</form>
+</br>
+</br> 
+<input type="button" value="Click Me! " onclick="crapsgame()"/>
+</br>
+</br>
+<center/>
+</br>
+<form name="outputForm">
+<textarea name="txaoutputField" id="outputField" rows="15" cols="15"/>
+</textarea>
+</form>
+</center>
+</body>
+</html>

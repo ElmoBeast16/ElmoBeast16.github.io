@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Final Game</title>
+
+<style>
+body	{
+background-image: url("hell.jpg");
+background-repeat: no-repeat;
+background-size: 1369px 670px;
+</style>
+
+<script type="text/javascript">
+function drawCircle(){
+//this function draws the circles out
+	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	ctx.canvas.width=900;
+	ctx.canvas.height=600;
+	ctx.fillStyle="#800000";
+	ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+	
+}
+var time = 0*1;
+var bulletmove = 0*1;
+function bulletmover(){
+	if(bulletmove == 0){
+	bulletmove = 1;
+	timer = setInterval("bossbullet()",70);
+	}
+	else if(bulletmove == 1){
+	bulletmove = 0;
+	clearInterval(timer);  	
+	}
+}
+function bossbullet(){
+time++;
+if(time >= 10){
+showImage();
+}
+}
+function showImage() {
+    
+}
+document.onkeypress = function enterKey2(e){
+if(!window.event){
+	//e= window.event || e;
+	//firefox
+	key = e.charCode;
+	//alert(e.charCode);
+	}
+	else{
+	//enterKey()
+	//chrome
+	var e = window.event;
+	key = e.keyCode;
+	}
+
+var x = parseInt(document.getElementById("downside").style.left);
+var y = parseInt(document.getElementById("downside").style.top);
+// movement for the characters
+if(key==97){
+	x -= 10;
+}
+else if(key==100){
+	x += 10;
+}
+else if(key==32){
+	TimerJumpA();
+}
+
+	document.getElementById("downside").style.left = x;
+	document.getElementById("downside").style.top = y;
+}
+// timer for the jumping function
+var onOff = 0*1;
+function TimerJumpA(){
+	if(onOff == 0){
+	onOff = 1;
+	timer = setInterval("jumpfunctionA()",70);
+	}
+	else if(onOff == 1){
+	onOff = 0;
+	clearInterval(timer);  	
+	}
+}
+// timer for the falling function
+var onOffA = 0*1;
+function TimerFallA(){
+	if(onOffA == 0){
+	onOffA = 1;
+	timer = setInterval("fallfunctionA()",70);
+	}
+	else if(onOffA == 1){
+	onOffA = 0;
+	clearInterval(timer);  	
+	}
+}
+// the way that the function will jump
+function jumpfunctionA() {
+	timejumpA ++;
+	var y = parseInt(document.getElementById("downside").style.top);
+	y += 10;
+	document.getElementById("downside").style.top = y;
+	if(timejumpA >= 13){
+		TimerJumpA();
+		TimerFallA();
+		timejumpA = 0;
+	}	
+}
+// how the character will fall after a certain amount of time
+function fallfunctionA() {
+	timefallA ++;
+	var y = parseInt(document.getElementById("downside").style.top);
+	y -= 10;
+	document.getElementById("downside").style.top = y;
+	if(timefallA >= 13){
+		TimerFallA();
+		timefallA = 0;
+	}
+}
+</script>
+
+</head>
+<body onload="drawCircle(), bulletmover()">
+</br>
+<center>
+<canvas id="myCanvas" width="900" height="600" style="border: 2px solid rgb(195,195,195);">
+your browser does not support the canvas tag.
+</canvas>
+</center> 
+
+<img style="position:absolute; top:555;left:605" width=60 height=60
+	id="downside" src="pot1_burned.png">
+<img style="position:absolute; top:282;left:650" width=190 height=190
+	id="enemy" src="farmer_burned.png">
+<img style="position:absolute; top:300;left:650" width=200 height=200
+	id="explosion" src="explosion.gif" hidden>
+
+<audio controls autoplay loop hidden>
+  <source src="boss.wav" type="audio/wav">
+  <source src="boss.wav" type="audio/wav">
+Your browser does not support the audio element.
+</audio>
+ 
+</body>
+</html>

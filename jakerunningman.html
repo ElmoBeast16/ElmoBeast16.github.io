@@ -1,0 +1,318 @@
+<html>
+<head>
+<title>
+Running Man
+</title>
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="container.css">
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="array.html">Fish Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+			<li><a href="start.html">Potato Stars</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+<script language="javascript">
+var tank = new Array();
+var enemy = new Array();
+var bulletArray = new Array("bullet0","bullet1","bullet2");
+var tankDir = 0*1;
+var bulletCount = 0;
+var lives = 3*1;
+var key = 0*1;
+var direction = new Array();
+
+document.onkeypress = function enterKey2(e){
+	if(!window.event){
+	//e= window.event || e;
+	//firefox
+	key = e.charCode;
+	//alert(e.charCode);
+	}
+	else{
+	//enterKey()
+	//chrome
+	var e = window.event;
+	key = e.keyCode;
+	}
+
+var x = parseInt(document.getElementById("tank").style.left);
+var y = parseInt(document.getElementById("tank").style.top);
+	
+//Left Button
+if(key == 97)
+{
+document.getElementById("tank").src= "knight.png";
+if(x > 0){
+x -= 10;
+}
+tankDir = 0;
+}
+//Right Button 
+else if(key == 100)
+{
+document.getElementById("tank").src= "knight.png";
+if(x < window.innerWidth - 75)
+{
+x += 10;
+}
+tankDir = 1;
+}
+//Up Button 
+else if(key == 115)
+{
+document.getElementById("tank").src= "knight.png";
+if(y < window.innerHeight - 75){
+y += 10;
+}
+tankDir = 2;
+}
+//Down Button
+else if(key == 119){
+document.getElementById("tank").src= "knight.png";
+if(y > 0){
+y -= 10;
+}
+tankDir = 3;
+}
+	
+	//Shooting Button
+	else if(key == 32)
+	{
+		if(bulletCount < 4)
+		{
+			bulletTimer();
+			bulletCount += 1;
+			if(bulletCount == 1)
+			{
+			document.getElementById(bulletArray[0]).style.display = "block";
+			document.getElementById(bulletArray[0]).style.left = document.getElementById("tank").style.left;
+			document.getElementById(bulletArray[0]).style.top = document.getElementById("tank").style.top;
+			direction[0] = tankDir;
+			}
+			else if(bulletCount == 2)
+			{
+			document.getElementById(bulletArray[1]).style.display = "block";
+			document.getElementById(bulletArray[1]).style.left = document.getElementById("tank").style.left;
+			document.getElementById(bulletArray[1]).style.top = document.getElementById("tank").style.top;
+			direction[1] = tankDir;
+			}
+			else if(bulletCount == 3)
+			{
+			document.getElementById(bulletArray[2]).style.display = "block";
+			document.getElementById(bulletArray[2]).style.left = document.getElementById("tank").style.left;
+			document.getElementById(bulletArray[2]).style.top = document.getElementById("tank").style.top;
+			direction[2] = tankDir;
+			}
+		}
+	}
+	
+	document.getElementById("tank").style.left = x;
+	document.getElementById("tank").style.top = y;
+}
+
+
+function bulletMove()
+{
+for(i=0;i<bulletArray.length;i++)
+{
+	var x = parseInt(document.getElementById(bulletArray[i]).style.left);
+	var y = parseInt(document.getElementById(bulletArray[i]).style.top);	
+	if(document.getElementById(bulletArray[i]).style.display == "block"){	
+		//Shooting position defined
+		if(direction[i] == 0){
+			x -= 20;
+			document.getElementById(bulletArray[i]).style.left = x;
+		}
+		else if(direction[i] == 1){
+			x += 20;
+			document.getElementById(bulletArray[i]).style.left = x;
+		}
+			
+		else if(direction[i] == 2){
+			y += 20;
+			document.getElementById(bulletArray[i]).style.top = y;
+		}
+		else if(direction[i] == 3){
+			y -= 20;
+			document.getElementById(bulletArray[i]).style.top = y;
+		}
+}
+		
+		//boundaries of the bullet movement
+		if(x > parseInt(document.getElementById("enemy").style.left) && x < parseInt(document.getElementById("enemy").style.left) + 75 && 
+		   y > parseInt(document.getElementById("enemy").style.top) && y < parseInt(document.getElementById("enemy").style.top) + 75)
+			{
+		document.getElementById(bulletArray[i]).style.display = "none";
+		document.getElementById(bulletArray[i]).style.left = 0;
+		document.getElementById(bulletArray[i]).style.top = 0;
+		
+		bulletCount = 0;
+		lives -= 1;
+		
+			if(lives == 0)
+			{
+			alert("You Win");
+			location.reload();
+			}
+		}
+		
+		if(x > window.innerWidth || x < 0)
+		{
+		document.getElementById(bulletArray[i]).style.display = "none";
+		document.getElementById(bulletArray[i]).style.left = 0;
+		document.getElementById(bulletArray[i]).style.top = 0;
+		bulletCount = 0;
+		}
+		
+		else if(y > window.innerHeight || y < 0)
+		{
+		document.getElementById(bulletArray[i]).style.display = "none";
+		document.getElementById(bulletArray[i]).style.left = 0;
+		document.getElementById(bulletArray[i]).style.top = 0;
+		bulletCount = 0;
+		}
+	}
+}
+
+var bulletOnOff = 0*1;
+function bulletTimer()
+{
+	if(bulletOnOff == 0){
+	timer = setInterval("bulletMove()",15);
+	bulletOnOff = 1;
+	}
+	else{}
+}
+
+function moveEnemy()
+{
+var enemyX = parseInt(document.getElementById("enemy").style.left);
+var enemyY = parseInt(document.getElementById("enemy").style.top);
+var tankX = parseInt(document.getElementById("tank").style.left);
+var tankY = parseInt(document.getElementById("tank").style.top);
+var differX = Math.abs(tankX-enemyX);
+var differY = Math.abs(tankY-enemyY);
+
+if(enemyX > 0 && enemyX < window.innerWidth - 75)
+{
+if(differX > differY){
+	if(enemyX > tankX){
+	enemyX += 5;
+	}
+	else if(enemyX < tankX){
+	enemyX -= 5;
+	}
+}
+}
+else if(enemyX <= 0 || enemyX >= window.innerWidth - 75)
+{
+enemyY -= 5;
+	if ((enemyX <= 0 || enemyX >= window.innerWidth - 75) && (enemyY <= 0 || enemyY >= window.innerHeight)){
+	var xcoord = Math.floor(Math.random()*(window.innerWidth) - 75)*1;
+	var ycoord = Math.floor(Math.random()*(window.innerHeight) - 75)*1;
+	enemyX = xcoord;
+	enemyX = ycoord;
+	}
+}
+if(enemyY > 0 && enemyY < window.innerHeight - 75)
+{
+if(differY > differX){
+	if(enemyY < tankY){
+	enemyY -= 5;
+	}
+	else if(enemyY > tankY){
+	enemyY += 5;
+	}
+}
+}
+else if(enemyY <= 0 || enemyY >= window.innerHeight - 75)
+{
+enemyX -= 5;
+	if ((enemyX <= 0 || enemyX >= window.innerWidth - 75) && (enemyY <= 0 || enemyY >= window.innerHeight - 75))
+	{
+	var xcoord = Math.floor(Math.random()*(window.innerWidth) - 75)*1;
+	var ycoord = Math.floor(Math.random()*(window.innerHeight) - 75)*1;
+	enemyX = xcoord;
+	enemyY = ycoord;
+	}
+}
+document.getElementById("enemy").style.left = enemyX;
+document.getElementById("enemy").style.top = enemyY;
+}
+
+var onOff = 0*1;
+function Timer()
+{
+if(onOff == 0)
+{
+onOff = 1;
+timer = setInterval("moveEnemy()",50);
+}
+else if(onOff == 1)
+{
+onOff = 0;
+clearInterval(timer);  	
+}
+}
+
+</script>
+</head>
+<center>
+<body onload="Timer();">
+<h1>Running Man</h1>
+
+
+<img style="position:absolute; top:300;left:300" width=75 height=75
+	id="tank" src="knight.png">
+<img style="position:absolute; top:300;left:800" width=75 height=75
+	id="enemy" src="bossleft.png">
+<img style="position:absolute; " width=15 height=15
+	id="bullet0" src="ninja1.jpg">
+<img style="position:absolute; " width=15 height=15
+	id="bullet1" src="ninja1.jpg">
+<img style="position:absolute; " width=15 height=15
+	id="bullet2" src="ninja1.jpg">	
+
+
+</center>
+</body>
+</html>

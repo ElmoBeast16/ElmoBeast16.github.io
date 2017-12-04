@@ -1,0 +1,275 @@
+<html>
+<head>
+<title>Array</title>
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="container.css">
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="array.html">Fish Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+			<li><a href="start.html">Potato Stars</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+</br>
+<script language="javascript">
+//global variables for pics 
+var row = 3*1;
+var col = 3*1;
+var timesmove = 1*1;
+var whichBox = new Array (new Array("ai1","ai2","ai3","ai4","ai5","ai6","ai7","ai8"),
+new Array("ai9","ai10","ai11","ai12","ai13","ai14","ai15","ai16"),
+new Array("ai17","ai18","ai19","ai20","ai21","ai22","ai23","ai24"),
+new Array("ai25","ai26","ai27","ai28","ai29","ai30","ai31","ai32"),
+new Array("ai33","ai34","ai35","ai36","ai37","ai38","ai39","ai40"),
+new Array("ai41","ai42","ai43","ai44","ai45","ai46","ai47","ai48"),
+new Array("ai49","ai50","ai51","ai52","ai53","ai54","ai55","ai56"),
+new Array("ai57","ai58","ai59","ai60","ai61","ai62","ai63","ai64"));
+function movefunction(Xcord,Ycord){
+moveknight = Math.floor(Math.random() * 8);
+	if(moveknight == 0){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row += 2;
+		col -= 1;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row -= 2;
+		col += 1;
+		}
+	}
+	else if(moveknight == 1){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row += 2;
+		col += 1;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row -= 2;
+		col -= 1;
+		}
+	}
+	else if(moveknight == 2){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row -= 2;
+		col -= 1;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row += 2;
+		col += 1;
+		}
+	}
+	else if(moveknight == 3){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row -= 2;
+		col += 1;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row += 2;
+		col -= 1;
+		}
+	}
+	else if(moveknight == 4){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row += 1;
+		col += 2;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row -= 1;
+		col -= 2;
+		}
+	}
+	else if(moveknight == 5){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row += 1;
+		col -= 2;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row -= 1;
+		col += 2;
+		}
+	}
+	else if(moveknight == 6){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row -= 1;
+		col -= 2;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row += 1;
+		col += 2;
+		}
+	}
+	else if(moveknight == 7){
+		document.getElementById(whichBox[row][col]).src = timesmove+".png";
+		timesmove += 1;
+		row -= 1;
+		col += 2;
+		if((row < 0 || row > 7 || col < 0 || col > 7) || (document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank.png"&&document.getElementById(whichBox[row][col]).getAttribute('src',2) != "blank1.png")){
+		timesmove -= 1;
+		row += 1;
+		col -= 2;
+		}
+	}	
+	document.getElementById(whichBox[row][col]).src = "knight.png";
+}
+
+//create variable to use as switch
+var onOff = 0*1;
+function myTimer(){
+
+	if(onOff == 0){
+		//create a timer
+		onOff = 1;
+		timer = setInterval("movefunction()",150);
+	}
+
+	else if(onOff == 1){
+		onOff = 0;
+		clearInterval(timer);
+	}
+	
+
+}
+</script>
+</head>
+<body>
+<center>
+<h1>Knight Program</h1>
+<table border="2">
+<tr>
+<td><img id="ai1" width="60" height="60" src="blank.png"></td>
+<td><img id="ai2" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai3" width="60" height="60" src="blank.png"></td>
+<td><img id="ai4" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai5" width="60" height="60" src="blank.png"></td>
+<td><img id="ai6" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai7" width="60" height="60" src="blank.png"></td>
+<td><img id="ai8" width="60" height="60" src="blank1.png"></td>
+</tr>
+<tr>
+<td><img id="ai9" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai10" width="60" height="60" src="blank.png"></td>
+<td><img id="ai11" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai12" width="60" height="60" src="blank.png"></td>
+<td><img id="ai13" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai14" width="60" height="60" src="blank.png"></td>
+<td><img id="ai15" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai16" width="60" height="60" src="blank.png"></td>
+</tr>
+<tr>
+<td><img id="ai17" width="60" height="60" src="blank.png"></td>
+<td><img id="ai18" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai19" width="60" height="60" src="blank.png"></td>
+<td><img id="ai20" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai21" width="60" height="60" src="blank.png"></td>
+<td><img id="ai22" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai23" width="60" height="60" src="blank.png"></td>
+<td><img id="ai24" width="60" height="60" src="blank1.png"></td>
+</tr>
+<tr>
+<td><img id="ai25" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai26" width="60" height="60" src="blank.png"></td>
+<td><img id="ai27" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai28" width="60" height="60" src="knight.png"></td>
+<td><img id="ai29" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai30" width="60" height="60" src="blank.png"></td>
+<td><img id="ai31" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai32" width="60" height="60" src="blank.png"></td>
+</tr>
+<tr>
+<td><img id="ai33" width="60" height="60" src="blank.png"></td>
+<td><img id="ai34" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai35" width="60" height="60" src="blank.png"></td>
+<td><img id="ai36" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai37" width="60" height="60" src="blank.png"></td>
+<td><img id="ai38" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai39" width="60" height="60" src="blank.png"></td>
+<td><img id="ai40" width="60" height="60" src="blank1.png"></td>
+</tr>
+<tr>
+<td><img id="ai41" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai42" width="60" height="60" src="blank.png"></td>
+<td><img id="ai43" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai44" width="60" height="60" src="blank.png"></td>
+<td><img id="ai45" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai46" width="60" height="60" src="blank.png"></td>
+<td><img id="ai47" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai48" width="60" height="60" src="blank.png"></td>
+</tr>
+<tr>
+<td><img id="ai49" width="60" height="60" src="blank.png"></td>
+<td><img id="ai50" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai51" width="60" height="60" src="blank.png"></td>
+<td><img id="ai52" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai53" width="60" height="60" src="blank.png"></td>
+<td><img id="ai54" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai55" width="60" height="60" src="blank.png"></td>
+<td><img id="ai56" width="60" height="60" src="blank1.png"></td>
+</tr>
+<tr>
+<td><img id="ai57" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai58" width="60" height="60" src="blank.png"></td>
+<td><img id="ai59" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai60" width="60" height="60" src="blank.png"></td>
+<td><img id="ai61" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai62" width="60" height="60" src="blank.png"></td>
+<td><img id="ai63" width="60" height="60" src="blank1.png"></td>
+<td><img id="ai64" width="60" height="60" src="blank.png"></td>
+</tr>
+</table>
+</br>
+<form name="frmmain">
+</br>
+</br>
+<input type="button" value="Move" onclick="movefunction(frmmain.txtX.value, frmmain.txtY.value)"/>
+<input type="button" value="auto" onclick="myTimer()">
+</br>
+</form>
+</br>
+
+
+</center>
+</body>
+</html>

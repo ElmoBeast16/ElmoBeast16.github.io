@@ -1,0 +1,151 @@
+<html>
+<head>
+
+<title>
+Cool Boards
+</title>
+
+<style type="text/css">
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="container.css">
+
+
+
+<body background="business.jpg">
+<center>
+</br>
+<img src="TITLE.png" style="width:100%">
+
+</center>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<center>
+
+<div id="menu">
+<ul>
+	<li><a href="homepage.html">Home</a>
+	
+	</li>
+	<li><a href="">First Semester</a>
+		<ul>
+			<li><a href="facebook.html">FaceBook</a></li>
+			<li><a href="tech.html">Tech Page</a></li>
+			<li><a href="collage.html">Collage</a></li>
+			<li><a href="madlibs.html">Mad Libs</a></li>
+			<li><a href="calories.html">Calorie Counter</a></li>
+			<li><a href="businesscard.html">Business Card</a></li>
+			<li><a href="coolboards.html">Cool Boards</a></li>
+			<li><a href="craps.html">Craps Game</a></li>
+			<li><a href="knight.html">Knight Game</a></li>
+		</ul>
+	</li>	
+	<li><a href="">Second Semester</a>
+		<ul>
+			<li><a href="numberarray.html">Array Sort</a></li>
+			<li><a href="lecture.html">Ball Bounce HTML 5</a></li>
+			<li><a href="ballbounce.html">Pong Game</a></li>
+			<li><a href="jakerunningman.html">Tank Chase</a></li>
+		</ul>	
+	</li>
+	
+<li><a href="http://www.gitastudents.com">Gita Site</a></li>
+<li><a href="final.html">Cyber Academy</a>
+</li>
+</ul>
+</div>	
+</br>
+</br>
+
+<script language="javascript">
+var managerTotal = 0*1;
+var customers = 0*1;
+var averageTotal = 0*1;
+
+function changeBG(radioGroup, chkBoots, nameString, addString, licString){
+var theTotal;
+
+if(radioGroup[0].checked){
+theTotal = 20;
+}
+
+else if(radioGroup[1].checked){
+theTotal = 30;
+}
+
+else if(radioGroup[2].checked){
+theTotal = 40;
+
+}
+
+if(chkBoots.checked){
+theTotal += 20;
+}
+
+customers +=1;
+managerTotal += theTotal;
+averageTotal = managerTotal/customers;
+
+document.OutputForm.txaOutputField.value = "Mailing Address:" + "\n" + nameString 
++ "\n" + addString + "\n" + licString + "\n" + "Your Total is " + "$" + theTotal + " per day.";
+
+}
+
+function changeMG(){
+
+
+document.OutputForm1.txaOutputField1.value = "Customers:  " + customers + "\n" +
+ "Average Sales:  " + averageTotal + "\n" + "Total Sales:  " + managerTotal;
+}
+
+
+</script>
+
+</head>
+<body bgcolor="FF05F3">
+<center>
+
+<h1>Cool Boards</h1>
+</br>
+<hr width="100%" size="7" color="black">
+</br>
+<form name="testForm">
+Name: &nbsp&nbsp<input type="text" name="txtName" value="" />
+</br>
+Address: &nbsp&nbsp<input type="text" name="txtAdd" value="" />
+</br>
+Driver's License: &nbsp&nbsp<input type="text" name="txtLic" value="" />
+</br>
+<input type="radio" name="radioBG" value="20"/>Beginner - $20 per day
+</br>
+<input type="radio" name="radioBG" value="30"/>Intermediate - $30 per day
+</br>
+<input type="radio" name="radioBG" value="40"/>Advanced - $40 per day
+</br>
+</br>
+<input type="checkbox" name="chkBoots" /> Boots with the Fur? - Extra $20 
+</br>
+</br>
+<input type="button" name="btnPush" value="Check Out"
+		onclick="changeBG(testForm.radioBG, testForm.chkBoots, testForm.txtName.value,
+							testForm.txtAdd.value, testForm.txtLic.value)" />
+</br>
+<input type="button" name="btnManager" value="Manager Facts"
+		onclick="changeMG()" />
+</form>
+<form name="OutputForm">
+<textarea name="txaOutputField" id="outputField" rows="8" cols="40"/>
+</textarea>
+</form>
+</br>
+<form name="OutputForm1">
+<textarea name="txaOutputField1" id="outputField1" rows="8" cols="40"/>
+</textarea>
+</form>
+
+</center>
+</body>
+</html>
